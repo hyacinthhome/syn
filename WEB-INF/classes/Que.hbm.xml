@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping  >
+
+    <!-- 属性table 表示在数据库中的表名  -->
+    <!--<class name="cn.itcast.entity.Exam" table="t_exam">
+        <id name="exam_id" column="exam_id">
+            <generator class="uuid"></generator>
+        </id>
+
+        <property name="exam_title" column="exam_title"></property>
+        <property name="exam_score" column="exam_score"></property>
+        <property name="exam_time" column="exam_time"></property>
+        <property name="exam_datetime" column="exam_datetime"></property>
+        <set name="exam_ques" cascade="save-update,delete">
+            <key column="eqid"></key>
+            <one-to-many class="cn.itcast.entity.Que"></one-to-many>
+        </set>
+    </class>-->
+
+    <class name="cn.itcast.entity.Que" table="t_que">
+        <id name="que_id" column="que_id">
+            <generator class="uuid"></generator>
+        </id>
+        <property name="que_des" type="text" length="200"></property>
+        <property name="que_choa" type="text" length="200"></property>
+        <property name="que_chob" type="text" length="200"></property>
+        <property name="que_choc" type="text" length="200"></property>
+        <property name="que_chod" type="text" length="200"></property>
+        <property name="que_type" type="text" length="200"></property>
+        <property name="que_source" type="text" length="200"></property>
+        <many-to-one name="que_exam" class="cn.itcast.entity.Exam" column="eqid" lazy="false"></many-to-one>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping  >
+
+    <!-- 属性table 表示在数据库中的表名  -->
+    <class name="cn.itcast.entity.Exam" table="t_exam">
+        <id name="exam_id" column="exam_id">
+            <generator class="uuid"></generator>
+        </id>
+
+        <property name="exam_title" column="exam_title"></property>
+        <property name="exam_score" column="exam_score"></property>
+        <property name="exam_time" column="exam_time"></property>
+        <property name="exam_datetime" column="exam_datetime"></property>
+        <set name="exam_ques" cascade="save-update,delete">
+            <key column="eqid"></key>
+            <one-to-many class="cn.itcast.entity.Que"></one-to-many>
+        </set>
+    </class>
+</hibernate-mapping>
